@@ -13,6 +13,26 @@ const baseUrl = process.env.CODESPACE_NAME
   ? `https://${process.env.CODESPACE_NAME}-8000.app.github.dev`
   : 'http://localhost:8000';
 
+const frontendOrigins = new Set(['http://localhost:5173', 'http://127.0.0.1:5173']);
+if (process.env.CODESPACE_NAME) {
+  frontendOrigins.add(`https://${process.env.CODESPACE_NAME}-5173.app.github.dev`);
+}
+
+app.use((request, response, next) => {
+  response.vary('Origin');
+  const origin = request.get('Origin');
+  if (origin && frontendOrigins.has(origin)) {
+    response.set('Access-Control-Allow-Origin', origin);
+    response.set('Access-Control-Allow-Methods', 'GET, OPTIONS');
+    response.set('Access-Control-Allow-Headers', 'Accept, Content-Type');
+  }
+  if (request.method === 'OPTIONS') {
+    response.sendStatus(204);
+    return;
+  }
+  next();
+});
+
 app.use(express.json());
 
 app.get('/api/health', (_request, response) => {
