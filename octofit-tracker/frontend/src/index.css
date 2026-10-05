@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=DM+Sans:wght@400;500;600;700&display=swap');
+
+:root {
+  --ink: #242b29;
+  --muted: #62716b;
+  --line: #dce3df;
+  --green: #14684c;
+  --coral: #ff805f;
+  --bs-body-font-family: 'DM Sans', sans-serif;
+  --bs-body-color: var(--ink);
+  --bs-body-bg: #f6f8f7;
+  color-scheme: light;
+  letter-spacing: 0;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+body { margin: 0; min-width: 320px; }
+#root { min-height: 100svh; }
+button, input, a { letter-spacing: 0; }
+a { color: var(--green); }
+.app-header { background: #242b29; color: white; border-top: 4px solid var(--coral); }
+.app-brand { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 20px; }
+.brand-link { display: flex; align-items: center; gap: 12px; color: white; text-decoration: none; font: 700 30px/1 'Barlow Condensed', sans-serif; }
+.brand-link:hover { color: white; }
+.brand-link img { width: 44px; height: 44px; object-fit: contain; }
+.school-label { color: #c9d4cf; font-size: 13px; }
+.app-navigation { background: white; border-bottom: 1px solid var(--line); }
+.navigation-links { display: flex; gap: 24px; overflow-x: auto; }
+.navigation-link { display: flex; align-items: center; gap: 8px; padding: 17px 0 14px; border-bottom: 3px solid transparent; color: var(--muted); text-decoration: none; white-space: nowrap; font-size: 14px; font-weight: 600; }
+.navigation-link.active { color: var(--green); border-bottom-color: var(--green); }
+.navigation-link:hover { color: var(--green); }
+.app-main { padding-top: 36px; padding-bottom: 48px; }
+.view-heading { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 24px; }
+.eyebrow { color: var(--muted); font-size: 12px; font-weight: 600; margin: 0 0 5px; }
+h1 { font-size: 30px; line-height: 1.2; font-weight: 700; margin: 0; overflow-wrap: anywhere; }
+.icon-button { width: 40px; height: 40px; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; border-radius: 4px; }
+.view-toolbar { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 16px; }
+.search-field { position: relative; width: 320px; max-width: 100%; }
+.search-field > svg { position: absolute; top: 12px; left: 12px; color: var(--muted); }
+.search-field input { padding-left: 40px; min-height: 42px; border-color: var(--line); border-radius: 4px; font-size: 14px; }
+.form-control:focus { border-color: var(--green); box-shadow: 0 0 0 3px #14684c20; }
+.record-count { color: var(--muted); font-size: 13px; white-space: nowrap; }
+.data-table { background: white; border-block: 1px solid var(--line); min-height: 220px; }
+.data-table table { font-size: 14px; min-width: 440px; }
+.data-table thead th { background: #edf2ef; padding: 14px 18px; color: #4e6258; font-size: 12px; font-weight: 700; border-bottom-color: var(--line); white-space: nowrap; }
+.data-table td { padding: 18px; border-color: #edf0ee; max-width: 480px; overflow-wrap: anywhere; }
+.data-table td:first-child { font-weight: 600; }
+.data-table tbody tr:hover td { background: #f8fbf9; }
+.data-table .table-state { text-align: center; height: 180px; color: var(--muted); font-weight: 400; }
+.pagination-bar { display: flex; align-items: center; justify-content: flex-end; gap: 16px; padding-top: 16px; font-size: 13px; }
+.skip-link { position: fixed; top: 12px; left: 12px; background: white; padding: 12px; z-index: 10; }
+:focus-visible { outline: 3px solid var(--coral); outline-offset: 3px; }
+
+@media (max-width: 575px) {
+  .app-brand { padding-block: 16px; }
+  .brand-link { font-size: 26px; }
+  .school-label { display: none; }
+  .navigation-links { gap: 22px; }
+  .navigation-link { font-size: 13px; }
+  .app-main { padding-top: 26px; }
+  .view-toolbar { align-items: stretch; flex-direction: column; gap: 8px; }
+  .search-field { width: 100%; }
+  .data-table td, .data-table thead th { padding: 14px 12px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
